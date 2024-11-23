@@ -1,5 +1,4 @@
 # WebSocket Code Executor
-
 *This extension allows you to send Lua code from VS Code to WebSocket clients.*
 
 ## Features
@@ -16,6 +15,7 @@
   4. Click on the three-dot menu in the top-right corner.
   5. Select **"Install from VSIX..."**.
   6. Choose the downloaded `.vsix` file.
+  ![image](https://github.com/user-attachments/assets/7c17b787-a281-49d2-885d-c555c48763cb)
 
 ## Usage
   - **Send code from the editor**: Click the **"Run"** button in the status bar.
@@ -53,5 +53,4 @@
     end
     ```
 
-## License
-MIT License.
+![image](https://github.com/user-attachments/assets/74b13639-7167-4348-a659-9e525bb7a39d)
