@@ -1,5 +1,6 @@
 # WebSocket Code Executor
 *This extension allows you to send Lua code from VS Code to WebSocket clients.*
+### **Support for all exploits that contain WebSocket!**
 
 ## Features
   - **Send code to clients**: Send Lua code from the active editor to connected WebSocket clients.
