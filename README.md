@@ -27,7 +27,7 @@
     local execName = getexecutorname and getexecutorname() or ""
     local function HandleError(ws, err)
         local msg = `[{execName}]: {err}`
-        ws:Send("OutPut: " .. msg)
+        ws:Send("OutPut - " .. msg)
         error(msg, 2)
     end
     
@@ -35,7 +35,7 @@
         local succ, ws = pcall(WebSocket.connect, 'ws://localhost:33882/')
         if succ then
             ws.OnMessage:Connect(function(code)
-                if code:sub(1, 8) == "OutPut: " then return end
+                if code:sub(1, 8) == "OutPut - " then return end
     
                 local func, err = loadstring(code)
                 if func then
