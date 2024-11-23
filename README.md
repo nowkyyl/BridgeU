@@ -26,7 +26,7 @@
     ```lua
     local execName = getexecutorname and getexecutorname() or ""
     local function HandleError(ws, err)
-        local msg = `[{execName}]: {err}`
+        local msg = `[{execName}] {err}`
         ws:Send("OutPut - " .. msg)
         error(msg, 2)
     end
