@@ -16,7 +16,8 @@
   4. Click on the three-dot menu in the top-right corner.
   5. Select **"Install from VSIX..."**.
   6. Choose the downloaded `.vsix` file.
-  ![image](https://github.com/user-attachments/assets/7c17b787-a281-49d2-885d-c555c48763cb)
+
+![image](https://github.com/user-attachments/assets/7c17b787-a281-49d2-885d-c555c48763cb)
 
 ## Usage
   - **Send code from the editor**: Click the **"Run"** button in the status bar.
