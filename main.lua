@@ -1,4 +1,4 @@
-local execName = getexecutorname and getexecutorname() or ""
+local execName = getexecutorname()
 local function HandleError(ws, err)
     local time = os.date("!*t")
     local msg = `[{execName} | {("%02d:%02d:%02d"):format(time.hour, time.min, time.sec)}] {err}`
