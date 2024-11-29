@@ -16,10 +16,10 @@ while true do
             if func then
                 local suc, res = pcall(func)
                 if not suc then
-                    HandleError(ws, res)
+                    pcall(HandleError, ws, res)
                 end
             else
-                HandleError(ws, err)
+                pcall(HandleError, ws, res)
             end
         end)
 
