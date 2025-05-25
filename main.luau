@@ -185,7 +185,6 @@ wsClient.OnMessage:Connect(function(message)
 	end
 end)
 
-
 wsClient.OnClose:Connect(function()
 	getgenv().currentWsClient = nil
 end)
