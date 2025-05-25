@@ -22,15 +22,15 @@ wsClient.OnMessage:Connect(function(message)
 	if message:sub(1, 7) == "Output:" then return end
 
 	local ok, payload = pcall(HttpService.JSONDecode, HttpService, message)
-	if not ok then return HandleError("\27[31mInvalid payload received\27[0m") end
+	if not ok then return HandleError("[ERROR] Invalid payload received") end
 
-	if type(payload) ~= "table" or not payload.content then return HandleError("\27[31mMissing script content\27[0m") end
+	if type(payload) ~= "table" or not payload.content then return HandleError("[ERROR] Missing script content") end
 
 	local currentFileName = payload.fileName or "Unknown"
 	fileName = currentFileName
 
 	local func, err = loadstring(payload.content)
-	if not func then return HandleError("\27[31m" .. err .. "\27[0m") end
+	if not func then return HandleError("[ERROR] " .. err) end
 
 	if envsByFile[currentFileName] then
 		local fileThread = threadsByFile[currentFileName]
@@ -98,17 +98,31 @@ wsClient.OnMessage:Connect(function(message)
 
 		-- overrides
 		print = function(...)
-			local msg = table.concat({...}, " ")
-			HandleError(msg)
-		end,
-		warn = function(...)
-			local msg = table.concat({...}, " ")
-			HandleError("\27[33m" .. msg .. "\27[0m")
-		end,
-		error = function(...)
-			local msg = table.concat({...}, " ")
-			HandleError("\27[31m" .. msg .. "\27[0m")
-		end,
+            local args = {...}
+            for i = 1, #args do
+                args[i] = tostring(args[i])
+            end
+            local msg = table.concat(args, " ")
+            HandleError("[INFO] " .. msg)
+        end,
+
+        warn = function(...)
+            local args = {...}
+            for i = 1, #args do
+                args[i] = tostring(args[i])
+            end
+            local msg = table.concat(args, " ")
+            HandleError("[WARN] " .. msg)
+        end,
+
+        error = function(...)
+            local args = {...}
+            for i = 1, #args do
+                args[i] = tostring(args[i])
+            end
+            local msg = table.concat(args, " ")
+            HandleError("[ERROR] " .. msg)
+        end,
 
 		-- internal modules and services
 		SecurityCapabilities = SecurityCapabilities,
@@ -181,7 +195,7 @@ wsClient.OnMessage:Connect(function(message)
 	
 	local success, execErr = coroutine.resume(thread)
 	if not success then
-		HandleError("\27[31m" .. execErr .. "\27[0m")
+		HandleError("[ERROR] " .. execErr)
 	end
 end)
 
