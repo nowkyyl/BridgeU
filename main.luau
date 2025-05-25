@@ -82,7 +82,7 @@ wsClient.OnMessage:Connect(function(message)
 		-- globals and core objects
 		game = game,
 		workspace = workspace,
-		script = script,
+		--script = script,
 		shared = shared,
 		_G = _G,
 		Instance = Instance,
