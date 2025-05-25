@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import sendContent from "../sendContent";
+
 export default async (resource: vscode.Uri) => {
     if (!resource) { return vscode.window.showInformationMessage("No file selected"); }
 
