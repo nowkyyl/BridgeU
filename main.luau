@@ -206,5 +206,6 @@ wsClient.OnClose:Connect(function()
 	getgenv().currentWsClient = nil
 	for i, v in threadsByFile do
 		coroutine.close(v)
+		threadsByFile[i] = nil
 	end
 end)
