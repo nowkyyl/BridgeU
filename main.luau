@@ -98,31 +98,31 @@ wsClient.OnMessage:Connect(function(message)
 
 		-- overrides
 		print = function(...)
-            local args = {...}
-            for i = 1, #args do
-                args[i] = tostring(args[i])
-            end
-            local msg = table.concat(args, " ")
-            HandleError("[INFO] " .. msg)
-        end,
-
-        warn = function(...)
-            local args = {...}
-            for i = 1, #args do
-                args[i] = tostring(args[i])
-            end
-            local msg = table.concat(args, " ")
-            HandleError("[WARN] " .. msg)
-        end,
-
-        error = function(...)
-            local args = {...}
-            for i = 1, #args do
-                args[i] = tostring(args[i])
-            end
-            local msg = table.concat(args, " ")
-            HandleError("[ERROR] " .. msg)
-        end,
+		    local args = {...}
+		    for i = 1, #args do
+			args[i] = tostring(args[i])
+		    end
+		    local msg = table.concat(args, " ")
+		    HandleError("[INFO] " .. msg)
+		end,
+	
+		warn = function(...)
+		    local args = {...}
+		    for i = 1, #args do
+			args[i] = tostring(args[i])
+		    end
+		    local msg = table.concat(args, " ")
+		    HandleError("[WARN] " .. msg)
+		end,
+	
+		error = function(...)
+		    local args = {...}
+		    for i = 1, #args do
+			args[i] = tostring(args[i])
+		    end
+		    local msg = table.concat(args, " ")
+		    HandleError("[ERROR] " .. msg)
+		end,
 
 		-- internal modules and services
 		SecurityCapabilities = SecurityCapabilities,
