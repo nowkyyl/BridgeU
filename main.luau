@@ -103,6 +103,7 @@ wsClient.OnMessage:Connect(function(message)
 			args[i] = tostring(args[i])
 		    end
 		    local msg = table.concat(args, " ")
+                    print(msg)
 		    HandleError("[INFO] " .. msg)
 		end,
 	
@@ -112,6 +113,7 @@ wsClient.OnMessage:Connect(function(message)
 			args[i] = tostring(args[i])
 		    end
 		    local msg = table.concat(args, " ")
+		    warn(msg)
 		    HandleError("[WARN] " .. msg)
 		end,
 	
@@ -122,6 +124,7 @@ wsClient.OnMessage:Connect(function(message)
 		    end
 		    local msg = table.concat(args, " ")
 		    HandleError("[ERROR] " .. msg)
+	            error(msg)
 		end,
 
 		-- internal modules and services
