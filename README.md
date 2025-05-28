@@ -1,20 +1,50 @@
-# Installation Guide
+# BridgeU
 
-1. **Download** the `.vsix` file for the extension.
-2. **Open** Visual Studio Code.
-3. **Navigate** to the Extensions view by pressing `Ctrl + Shift + X`.
-4. **Click** on the three-dot menu located in the top-right corner.
-5. **Select** `Install from VSIX...`.
-6. **Choose** the downloaded `.vsix` file and confirm the installation.
+BridgeU is a Visual Studio Code extension that sends script content to WebSocket clients, allowing you to broadcast your current file or watch files for changes and send updates automatically.
 
-![VSCode Install from VSIX](https://github.com/user-attachments/assets/161e57f8-4cb1-48f9-a8f7-254daa9ef4b0)
+## Features
 
-# Changelog
+- **Run Script from Editor**  
+  Send the current active file content to connected WebSocket clients with a single command.
 
-* Fixed the **Output display** issues.
-* Resolved the bug where **WebSocket never sent the script**.
-* Various **other improvements and optimizations**.
+- **Right-Click to Send**  
+  Right-click any file in the Explorer and select **BridgeU: RunScript** or **BridgeU: Watcher** to send or watch that file.
 
+- **File Watcher**  
+  Automatically watch a selected file for changes and broadcast updates in real-time.
+
+- **Automatic Watcher on Startup**  
+  Configure the extension to watch a specific file when VSCode starts by setting the path in your workspace settings.
+
+- **Output Channel**  
+  See connection logs, broadcast status, and errors in a dedicated output channel named **BridgeU** inside VSCode.
+
+## Usage
+
+### Run Script
+
+- Open the file you want to send.
+- Use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run **BridgeU: RunScript**.
+- Alternatively, right-click the file in Explorer and select **BridgeU: RunScript**.
+- The file content is sent to all connected WebSocket clients.
+
+### File Watcher
+
+- Right-click the file in Explorer and select **BridgeU: Watcher** to start/stop watching.
+- When the file changes, the extension broadcasts the new content automatically.
+- You can also configure the file to watch automatically on VSCode startup.
+
+### Automatic Watcher
+
+Add the following setting to your `.vscode/settings.json` or user settings:
+
+```json
+{
+  "BridgeU.targetWatcher": "/absolute/path/to/your/file.luau"
+}
+```
+
+# Run on executor
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nowkyyl/bridgeu/refs/heads/master/main.luau"))()
 ```
