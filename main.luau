@@ -10,7 +10,7 @@ local function HandleError(wsClient, fileName, type, err)
 end
 
 local threadsByFile = getgenv().threadsByFile or {}
-local player = game.Players.LocalPlayer
+local player = game:GetService("Players").LocalPlayer
 while true do
 	local ok, wsClient = pcall(WebSocket.connect, `ws://localhost:8080/?userId={player.UserId}`)
 	if not ok then
