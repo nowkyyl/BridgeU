@@ -33,12 +33,9 @@ while true do
 			return HandleError(wsClient, fileName, "ERROR", err)
 		end
 
-		if threadsByFile[fileName] then
-			local fileThread = threadsByFile[fileName]
+		local fileThread = threadsByFile[fileName]
+		if fileThread then
 			coroutine.close(fileThread)
-
-			threadsByFile[fileName] = nil
-			getgenv().threadsByFile = threadsByFile
 		end
 
 		local env = {
