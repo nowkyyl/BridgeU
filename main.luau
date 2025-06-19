@@ -30,7 +30,8 @@ while true do
 
 		local func, err = loadstring(content)
 		if not func then
-			return HandleError(wsClient, fileName, "ERROR", err)
+			HandleError(wsClient, fileName, "ERROR", err)
+			return error(err)
 		end
 
 		local fileThread = threadsByFile[fileName]
@@ -122,7 +123,7 @@ while true do
 				end
 				local msg = table.concat(args, " ")
 				HandleError(wsClient, fileName, "ERROR", msg)
-				warn(msg)
+				error(msg)
 			end,
 
 			-- internal modules and services
@@ -197,6 +198,7 @@ while true do
 		local ok, exec = coroutine.resume(thread)
 		if not ok then
 			HandleError(wsClient, fileName, "ERROR", exec)
+			error(exec)
 		end
 	end)
 
